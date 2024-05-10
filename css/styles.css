@@ -196,3 +196,80 @@ footer .links .link {
 	height: 0.2em;
 	width: 0.5em;
 }
+
+.btn-open-dialog {
+	padding: 4px 8px;
+	border: 1px solid #e3e3e3;
+	background: #fafafa;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.btn-open-dialog:hover {
+	background: #e3e3e3;
+}
+
+dialog {
+	margin: 30px auto;
+	width: 600px;
+	max-width: 90vw;
+	top: 50%;
+	border-radius: 4px;
+	border: 1px solid #a5a5a5;
+	background-color: #ffffff;
+	transform: translateY(-50%);
+}
+
+dialog .btn-close {
+	float: right;
+	display: block;
+	margin: 10px;
+	border: 1px solid transparent;
+	background: transparent;
+	color: #000000;
+	border-radius: 4px;
+	width: 34px;
+	font-size: 28px;
+	line-height: 1;
+	padding: 0 0 5px 1px;
+	cursor: pointer;
+}
+dialog .btn-close:hover {
+	background: #e3e3e3;
+}
+
+dialog .dialog-title {
+	padding: 15px 15px 5px;
+	font-size: 18px;
+}
+
+dialog .dialog-content {
+	padding: 15px;
+}
+
+dialog .dialog-content img {
+	max-width: 100%;
+}
+
+dialog .dialog-content .figure-list {
+	text-align: center;
+	padding: 5px 0 0;
+}
+
+dialog .dialog-content .figure-list li {
+	padding: 5px;
+	display: inline-block;
+}
+
+dialog .btn-open-image {
+	padding: 4px 8px;
+	border: 1px solid #e3e3e3;
+	background: #fafafa;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+dialog .btn-open-image.active,
+dialog .btn-open-image:hover {
+	background: #e3e3e3;
+}
