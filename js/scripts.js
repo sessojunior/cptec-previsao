@@ -46,3 +46,52 @@ function openDialog(item) {
 function closeDialog() {
 	dialog.close();
 }
+
+
+// ________________________
+
+// Mapeamento dos nomes dos botões para os nomes dos selects e opções correspondentes
+var modeloSelecionado = {
+	'wrf': ['024h', '048h', '072h', '096h', '120h', '144h', '168h'],
+	'brams': ['024h', '048h', '072h', '096h', '120h', '144h', '168h'],
+	'eta': ['024h', '048h', '072h', '096h', '120h', '144h', '168h'],
+	'smec': ['024h', '048h', '072h', '096h', '120h', '144h', '168h'],
+	'multi': ['10mm', '25mm', '50mm', '75mm', '100mm', '150mm'],
+	'bam': ['Semana 1', 'Semana 2']
+};
+
+// Adiciona um evento de clique a cada botão
+document.querySelectorAll('.btns-container button').forEach(function(button) {
+	button.addEventListener('click', function() {
+		// Remove a classe 'active' de todos os botões
+		document.querySelectorAll('.btns-container button').forEach(function(btn) {
+			btn.classList.remove('active');
+		});
+		// Adiciona a classe 'active' ao botão clicado
+		button.classList.add('active');
+		// Remove todos os botões anteriores
+		document.querySelectorAll('.carousel-inner .carousel-item').forEach(function(item) {
+			item.remove();
+		});
+		// Obtém o modelo selecionado
+		var modelo = button.getAttribute('aria-label');
+		// Obtém os botões para o modelo selecionado
+		var botoes = modeloSelecionado[modelo];
+		// Cria uma div para os botões
+		var div = document.createElement('div');
+		div.classList.add('carousel-item', 'active');
+		div.innerHTML = '<div class="text" id="' + modelo + '"><h4>Precipitação Diária:</h4></div>';
+		// Adiciona os botões à div
+		botoes.forEach(function(btn) {
+			var buttonElement = document.createElement('button');
+			var aElement = document.createElement('a');
+			aElement.href = '';
+			aElement.target = '_blank';
+			aElement.textContent = btn;
+			buttonElement.appendChild(aElement);
+			div.querySelector('.text').appendChild(buttonElement);
+		});
+		// Insere a div gerada na página
+		document.querySelector('.carousel-inner').appendChild(div);
+	});
+});

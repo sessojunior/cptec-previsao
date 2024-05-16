@@ -273,3 +273,15 @@ dialog .btn-open-image.active,
 dialog .btn-open-image:hover {
 	background: #e3e3e3;
 }
+
+/* ---------------------- */
+
+.text {
+	display: flex;
+	justify-content: start;
+	align-items: center;
+}
+
+.text a {
+	padding-left: 10px;
+}

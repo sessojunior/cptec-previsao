@@ -10,6 +10,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
         <script src="js/scripts.js"></script>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
     </head>
 
     <body>
@@ -27,9 +28,36 @@
             <section class="content">
                 <h3>Produtos de Previsão Numérica</h3>
                 <ul class="subtitle-links">
-                    <li><a href="#" class="active" data-region="sul" onclick="changeRegion(this);">Região Sul</a></li>
-                    <li><a href="#" data-region="nde" onclick="changeRegion(this);">Região Nordeste</a></li>
+                    <li><a class="active" data-region="sul" onclick="changeRegion(this);">Região Sul</a></li>
+                    <li><a data-region="nde" onclick="changeRegion(this);">Região Nordeste</a></li>
                 </ul>
+
+                <!-- _______________________________ -->
+                
+                <div id="carouselSul" class="carousel slide">
+                    <div class="btns-container">
+                        <button id="button1" type="button" data-bs-target="#carouselSul" data-bs-slide-to="0" class="active active-button" aria-current="true" aria-label="wrf">Modelo WRF</button>
+                        <button id="button2" type="button" data-bs-target="#carouselSul" data-bs-slide-to="1" aria-label="brams">Modelo BRAMS</button>
+                        <button id="button3" type="button" data-bs-target="#carouselSul" data-bs-slide-to="2" aria-label="eta">Modelo ETA</button>
+                        <button id="button4" type="button" data-bs-target="#carouselSul" data-bs-slide-to="3" aria-label="smec">Modelo SMEC</button>
+                        <button id="button5" type="button" data-bs-target="#carouselSul" data-bs-slide-to="4" aria-label="multi">Multimodelos</button>
+                        <button id="button6" type="button" data-bs-target="#carouselSul" data-bs-slide-to="5" aria-label="bam">Previsão Anomalia de Precipitação (BAM Subsazonal)</button>
+                    </div>
+
+                    <div class="carousel-inner">
+                        <!-- Botões dinâmicos serão gerados aqui -->
+                    </div>
+
+                    <div class="figuras">
+                        <img src="{{ $urlImgSelecionada }}" alt="Link da imagem selecionada">
+                    </div>
+
+                </div>
+                
+                
+                <!-- _______________________________ -->
+
+
                 <!-- Região Sul -->
                 <div class="region sul">
                     <div class="accordion">
@@ -323,6 +351,9 @@
             <h2 class="dialog-title"></h2>
             <div class="dialog-content"></div>
         </dialog>
+
+
+        <script src="js/bootstrap.bundle.min.js"></script>
     </body>
 
 </html>
