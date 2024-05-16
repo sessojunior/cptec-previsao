@@ -69,7 +69,7 @@ document.querySelectorAll('.btns-container button').forEach(function(button) {
 		});
 		// Adiciona a classe 'active' ao botão clicado
 		button.classList.add('active');
-		// Remove todos os botões anteriores
+		// Remove todos os conteúdos anteriores
 		document.querySelectorAll('.carousel-inner .carousel-item').forEach(function(item) {
 			item.remove();
 		});
@@ -80,17 +80,73 @@ document.querySelectorAll('.btns-container button').forEach(function(button) {
 		// Cria uma div para os botões
 		var div = document.createElement('div');
 		div.classList.add('carousel-item', 'active');
-		div.innerHTML = '<div class="text" id="' + modelo + '"><h4>Precipitação Diária:</h4></div>';
-		// Adiciona os botões à div
-		botoes.forEach(function(btn) {
-			var buttonElement = document.createElement('button');
-			var aElement = document.createElement('a');
-			aElement.href = '';
-			aElement.target = '_blank';
-			aElement.textContent = btn;
-			buttonElement.appendChild(aElement);
-			div.querySelector('.text').appendChild(buttonElement);
-		});
+		div.innerHTML = '<div class="text" id="' + modelo + '"></div>';
+		// Adiciona os botões de "Precipitação Diária" à div, exceto para "Multimodelos" e "BAM"
+		if (modelo !== 'multi' && modelo !== 'bam') {
+			var divDiaria = document.createElement('div');
+			divDiaria.innerHTML = '<h4>Precipitação Diária:</h4>';
+			botoes.forEach(function(btn) {
+				var buttonElement = document.createElement('button');
+				var aElement = document.createElement('a');
+				aElement.href = '';
+				aElement.target = '_blank';
+				aElement.textContent = btn;
+				buttonElement.appendChild(aElement);
+				divDiaria.appendChild(buttonElement);
+			});
+			div.querySelector('.text').appendChild(divDiaria);
+		}
+		// Adiciona a seção de "Precipitação Acumulada" se não for "Multimodelos" ou "BAM"
+		if (modelo !== 'multi' && modelo !== 'bam') {
+			var divAcumulada = document.createElement('div');
+			divAcumulada.classList.add('text', 'acumulada');
+			divAcumulada.innerHTML = '<h4>Precipitação Acumulada:</h4>';
+			botoes.forEach(function(btn) {
+				var buttonElement = document.createElement('button');
+				var aElement = document.createElement('a');
+				aElement.href = '';
+				aElement.target = '_blank';
+				aElement.textContent = btn;
+				buttonElement.appendChild(aElement);
+				divAcumulada.appendChild(buttonElement);
+			});
+			// Adiciona a seção de "Precipitação Acumulada" à div
+			div.querySelector('.text').appendChild(divAcumulada);
+		}
+		// Adiciona a seção de "Probabilidade de Precipitação Acumulada" se for "Multimodelos"
+		if (modelo === 'multi') {
+			var divAcumulada = document.createElement('div');
+			divAcumulada.classList.add('text', 'acumulada');
+			divAcumulada.innerHTML = '<h4>Probabilidade de Precipitação Acumulada:</h4>';
+			botoes.forEach(function(btn) {
+				var buttonElement = document.createElement('button');
+				var aElement = document.createElement('a');
+				aElement.href = '';
+				aElement.target = '_blank';
+				aElement.textContent = btn;
+				buttonElement.appendChild(aElement);
+				divAcumulada.appendChild(buttonElement);
+			});
+			// Adiciona a seção de "Probabilidade de Precipitação Acumulada" à div
+			div.querySelector('.text').appendChild(divAcumulada);
+		}
+		// Adiciona a seção de "Previsão Próximas Semanas" se for "BAM"
+		if (modelo === 'bam') {
+			var divAcumulada = document.createElement('div');
+			divAcumulada.classList.add('text', 'acumulada');
+			divAcumulada.innerHTML = '<h4>Previsão Próximas Semanas:</h4>';
+			botoes.forEach(function(btn) {
+				var buttonElement = document.createElement('button');
+				var aElement = document.createElement('a');
+				aElement.href = '';
+				aElement.target = '_blank';
+				aElement.textContent = btn;
+				buttonElement.appendChild(aElement);
+				divAcumulada.appendChild(buttonElement);
+			});
+			// Adiciona a seção de "Previsão Próximas Semanas" à div
+			div.querySelector('.text').appendChild(divAcumulada);
+		}
 		// Insere a div gerada na página
 		document.querySelector('.carousel-inner').appendChild(div);
 	});
