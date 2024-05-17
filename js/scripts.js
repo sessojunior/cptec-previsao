@@ -60,94 +60,75 @@ var modeloSelecionado = {
 	'bam': ['Semana 1', 'Semana 2']
 };
 
-// Adiciona um evento de clique a cada botão
-document.querySelectorAll('.btns-container button').forEach(function(button) {
-	button.addEventListener('click', function() {
-		// Remove a classe 'active' de todos os botões
-		document.querySelectorAll('.btns-container button').forEach(function(btn) {
-			btn.classList.remove('active');
-		});
-		// Adiciona a classe 'active' ao botão clicado
-		button.classList.add('active');
-		// Remove todos os conteúdos anteriores
-		document.querySelectorAll('.carousel-inner .carousel-item').forEach(function(item) {
-			item.remove();
-		});
-		// Obtém o modelo selecionado
-		var modelo = button.getAttribute('aria-label');
-		// Obtém os botões para o modelo selecionado
-		var botoes = modeloSelecionado[modelo];
-		// Cria uma div para os botões
-		var div = document.createElement('div');
-		div.classList.add('carousel-item', 'active');
-		div.innerHTML = '<div class="text" id="' + modelo + '"></div>';
-		// Adiciona os botões de "Precipitação Diária" à div, exceto para "Multimodelos" e "BAM"
-		if (modelo !== 'multi' && modelo !== 'bam') {
-			var divDiaria = document.createElement('div');
-			divDiaria.innerHTML = '<h4>Precipitação Diária:</h4>';
-			botoes.forEach(function(btn) {
-				var buttonElement = document.createElement('button');
-				var aElement = document.createElement('a');
-				aElement.href = '';
-				aElement.target = '_blank';
-				aElement.textContent = btn;
-				buttonElement.appendChild(aElement);
-				divDiaria.appendChild(buttonElement);
-			});
-			div.querySelector('.text').appendChild(divDiaria);
+function toggleWrfContent(event) {
+	var buttonId = event.target.id;
+	var targetDivId = buttonId.replace("btn-", "");
+	var contentDiv = document.getElementById(targetDivId);
+	
+	if (buttonId === "btn-wrf" || buttonId === "btn-brams") {
+		// console.log('ButtonID:', buttonId)
+		if (contentDiv.innerHTML.trim()) {
+			contentDiv.innerHTML = `
+				<div class="d-flex gap-3">
+					<div class="align-items-start mt-1 w-50">
+						<div class="nav nav-pills me-3" id="${targetDivId}-diaria-v-pills-tab" role="tablist">
+							${generateButtons("diaria", targetDivId)}
+						</div>
+						<div class="tab-content" id="${targetDivId}-diaria-v-pills-tabContent">
+							${generateImageTabs("diaria", targetDivId)}
+						</div>
+					</div>
+					<div class="align-items-start mt-1 w-50">
+						<div class="nav nav-pills me-3" id="${targetDivId}-acumulada-v-pills-tab" role="tablist">
+							${generateButtons("acumulada", targetDivId)}
+						</div>
+						<div class="tab-content" id="${targetDivId}-acumulada-v-pills-tabContent">
+							${generateImageTabs("acumulada", targetDivId)}
+						</div>
+					</div>
+				</div>
+			`;
+			// console.log('CONTENT DIV:', targetDivId)
 		}
-		// Adiciona a seção de "Precipitação Acumulada" se não for "Multimodelos" ou "BAM"
-		if (modelo !== 'multi' && modelo !== 'bam') {
-			var divAcumulada = document.createElement('div');
-			divAcumulada.classList.add('text', 'acumulada');
-			divAcumulada.innerHTML = '<h4>Precipitação Acumulada:</h4>';
-			botoes.forEach(function(btn) {
-				var buttonElement = document.createElement('button');
-				var aElement = document.createElement('a');
-				aElement.href = '';
-				aElement.target = '_blank';
-				aElement.textContent = btn;
-				buttonElement.appendChild(aElement);
-				divAcumulada.appendChild(buttonElement);
-			});
-			// Adiciona a seção de "Precipitação Acumulada" à div
-			div.querySelector('.text').appendChild(divAcumulada);
+	}
+}
+
+function generateButtons(type, targetDivId) {
+	var buttonsHTML = "";
+	for (var i = 24; i <= 168; i += 24) {
+		buttonsHTML += `
+			<button class="nav-link ${i === 24 ? 'active' : ''}" id="${targetDivId}-${type}-${i}h" data-bs-toggle="pill"
+				data-bs-target="#${targetDivId}-${type}-v-pills-${i}h" type="button" role="tab"
+				aria-controls="${targetDivId}-${type}-v-pills-${i}h" aria-selected="${i === 24 ? 'true' : 'false'}">${i}h</button>
+		`;
+	}
+	return buttonsHTML;
+}
+
+function generateImageTabs(type, targetDivId) {
+	var imageTabsHTML = "";
+	var baseUrl;
+
+	if (targetDivId === "wrf") {
+		baseUrl = "https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/";
+	} else if (targetDivId === "brams") {
+		baseUrl = "https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/";
+	}
+
+	for (var i = 24; i <= 168; i += 24) {
+		var imgSrc;
+		if (type == "diaria") {
+			imgSrc = baseUrl + `prec_sul_${i < 100 ? '0' : ''}${i}.png`;
+		} else if (type == "acumulada") {
+			imgSrc = baseUrl + `prec_acum_sul_${i < 100 ? '0' : ''}${i}.png`;
 		}
-		// Adiciona a seção de "Probabilidade de Precipitação Acumulada" se for "Multimodelos"
-		if (modelo === 'multi') {
-			var divAcumulada = document.createElement('div');
-			divAcumulada.classList.add('text', 'acumulada');
-			divAcumulada.innerHTML = '<h4>Probabilidade de Precipitação Acumulada:</h4>';
-			botoes.forEach(function(btn) {
-				var buttonElement = document.createElement('button');
-				var aElement = document.createElement('a');
-				aElement.href = '';
-				aElement.target = '_blank';
-				aElement.textContent = btn;
-				buttonElement.appendChild(aElement);
-				divAcumulada.appendChild(buttonElement);
-			});
-			// Adiciona a seção de "Probabilidade de Precipitação Acumulada" à div
-			div.querySelector('.text').appendChild(divAcumulada);
-		}
-		// Adiciona a seção de "Previsão Próximas Semanas" se for "BAM"
-		if (modelo === 'bam') {
-			var divAcumulada = document.createElement('div');
-			divAcumulada.classList.add('text', 'acumulada');
-			divAcumulada.innerHTML = '<h4>Previsão Próximas Semanas:</h4>';
-			botoes.forEach(function(btn) {
-				var buttonElement = document.createElement('button');
-				var aElement = document.createElement('a');
-				aElement.href = '';
-				aElement.target = '_blank';
-				aElement.textContent = btn;
-				buttonElement.appendChild(aElement);
-				divAcumulada.appendChild(buttonElement);
-			});
-			// Adiciona a seção de "Previsão Próximas Semanas" à div
-			div.querySelector('.text').appendChild(divAcumulada);
-		}
-		// Insere a div gerada na página
-		document.querySelector('.carousel-inner').appendChild(div);
-	});
-});
+
+		imageTabsHTML += `
+            <div class="tab-pane fade ${i === 24 ? 'show active' : ''}" id="${targetDivId}-${type}-v-pills-${i}h" role="tabpanel"
+                aria-labelledby="${targetDivId}-${type}-${i}h" tabindex="0">
+                <img class="w-100" src="${imgSrc}">
+            </div>
+        `;
+	}
+	return imageTabsHTML;
+}

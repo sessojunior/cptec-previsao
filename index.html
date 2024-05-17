@@ -1,359 +1,679 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Produtos do INPE</title>
-        <link rel="stylesheet" href="css/styles.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos do INPE</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
 
-    <body>
-        <header>
-            <div class="logo">
-                <a href="https://www.cptec.inpe.br">
-                    <h2 class="title">Centro de Previsão de Tempo e Estudos Climáticos</h2>
-                </a>
-                <span class="portal-description">
-                    <a href="https://www.gov.br/inpe/pt-br">Instituto Nacional de Pesquisas Espaciais</a>
-                </span>
+<body>
+    <header>
+        <div class="logo">
+            <a href="https://www.cptec.inpe.br">
+                <h2 class="title">Centro de Previsão de Tempo e Estudos Climáticos</h2>
+            </a>
+            <span class="portal-description">
+                <a href="https://www.gov.br/inpe/pt-br">Instituto Nacional de Pesquisas Espaciais</a>
+            </span>
+        </div>
+    </header>
+    <main>
+        <section class="content">
+            <h3>Produtos de Previsão Numérica</h3>
+            <ul class="subtitle-links">
+                <li><a class="active" data-region="sul" onclick="changeRegion(this);">Região Sul</a></li>
+                <li><a data-region="nde" onclick="changeRegion(this);">Região Nordeste</a></li>
+            </ul>
+
+            <!-- _______________________________ -->
+
+            <div class="nav-container">
+
+                <div class="btn-nav">
+                    <button onclick="toggleWrfContent(event)" data-bs-toggle="collapse" data-bs-target="#wrf"
+                        aria-expanded="false" aria-controls="wrf" class="btn btn-primary btn-collapse" id="btn-wrf">Modelo WRF</button>
+
+                    <div class="collapse" id="wrf">
+                        <!-- DIÁRIA -->
+                        <!-- <div class="d-flex gap-3">
+                            <div class="align-items-start mt-1 w-50">
+                                <div class="nav nav-pills me-3" id="diaria-v-pills-tab" role="tablist">
+                                    <button class="nav-link active" id="diaria-024h" data-bs-toggle="pill"
+                                        data-bs-target="#diaria-v-pills-024h" type="button" role="tab"
+                                        aria-controls="diaria-v-pills-024h" aria-selected="true">024h</button>
+                                    <button class="nav-link" id="diaria-048h" data-bs-toggle="pill"
+                                        data-bs-target="#diaria-v-pills-048h" type="button" role="tab"
+                                        aria-controls="diaria-v-pills-048h" aria-selected="false">048h</button>
+                                    <button class="nav-link" id="diaria-072h" data-bs-toggle="pill"
+                                        data-bs-target="#diaria-v-pills-072h" type="button" role="tab"
+                                        aria-controls="diaria-v-pills-072h" aria-selected="false">072h</button>
+                                    <button class="nav-link" id="diaria-096h" data-bs-toggle="pill"
+                                        data-bs-target="#diaria-v-pills-096h" type="button" role="tab"
+                                        aria-controls="diaria-v-pills-096h" aria-selected="false">096h</button>
+                                    <button class="nav-link" id="diaria-120h" data-bs-toggle="pill"
+                                        data-bs-target="#diaria-v-pills-120h" type="button" role="tab"
+                                        aria-controls="diaria-v-pills-120h" aria-selected="false">120h</button>
+                                    <button class="nav-link" id="diaria-144h" data-bs-toggle="pill"
+                                        data-bs-target="#diaria-v-pills-144h" type="button" role="tab"
+                                        aria-controls="diaria-v-pills-144h" aria-selected="false">144h</button>
+                                    <button class="nav-link" id="diaria-168h" data-bs-toggle="pill"
+                                        data-bs-target="#diaria-v-pills-168h" type="button" role="tab"
+                                        aria-controls="diaria-v-pills-168h" aria-selected="false">168h</button>
+                                </div>
+
+                                <div class="tab-content" id="diaria-v-pills-tabContent">
+                                    <div class="tab-pane fade show active" id="diaria-v-pills-024h" role="tabpanel"
+                                        aria-labelledby="diaria-024h" tabindex="0"><img class="w-100"
+                                            src="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_sul_024.png">
+                                    </div>
+                                    <div class="tab-pane fade" id="diaria-v-pills-048h" role="tabpanel"
+                                        aria-labelledby="diaria-048h" tabindex="0"><img class="w-100"
+                                            src="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_sul_048.png">
+                                    </div>
+                                    <div class="tab-pane fade" id="diaria-v-pills-072h" role="tabpanel"
+                                        aria-labelledby="diaria-072h" tabindex="0"><img class="w-100"
+                                            src="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_sul_072.png">
+                                    </div>
+                                    <div class="tab-pane fade" id="diaria-v-pills-096h" role="tabpanel"
+                                        aria-labelledby="diaria-096h" tabindex="0"><img class="w-100"
+                                            src="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_sul_096.png">
+                                    </div>
+                                    <div class="tab-pane fade" id="diaria-v-pills-120h" role="tabpanel"
+                                        aria-labelledby="diaria-120h" tabindex="0"><img class="w-100"
+                                            src="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_sul_120.png">
+                                    </div>
+                                    <div class="tab-pane fade" id="diaria-v-pills-144h" role="tabpanel"
+                                        aria-labelledby="diaria-144h" tabindex="0"><img class="w-100"
+                                            src="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_sul_144.png">
+                                    </div>
+                                    <div class="tab-pane fade" id="diaria-v-pills-168h" role="tabpanel"
+                                        aria-labelledby="diaria-168h" tabindex="0"><img class="w-100"
+                                            src="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_sul_168.png">
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <div class="align-items-start mt-1 w-50">
+                                <div class="nav nav-pills me-3" id="acumulada-v-pills-tab" role="tablist">
+                                    <button class="nav-link active" id="acumulada-024h" data-bs-toggle="pill"
+                                        data-bs-target="#acumulada-v-pills-024h" type="button" role="tab"
+                                        aria-controls="acumulada-v-pills-024h" aria-selected="true">024h</button>
+                                    <button class="nav-link" id="acumulada-048h" data-bs-toggle="pill"
+                                        data-bs-target="#acumulada-v-pills-048h" type="button" role="tab"
+                                        aria-controls="acumulada-v-pills-048h" aria-selected="false">048h</button>
+                                    <button class="nav-link" id="acumulada-072h" data-bs-toggle="pill"
+                                        data-bs-target="#acumulada-v-pills-072h" type="button" role="tab"
+                                        aria-controls="acumulada-v-pills-072h" aria-selected="false">072h</button>
+                                    <button class="nav-link" id="acumulada-096h" data-bs-toggle="pill"
+                                        data-bs-target="#acumulada-v-pills-096h" type="button" role="tab"
+                                        aria-controls="acumulada-v-pills-096h" aria-selected="false">096h</button>
+                                    <button class="nav-link" id="acumulada-120h" data-bs-toggle="pill"
+                                        data-bs-target="#acumulada-v-pills-120h" type="button" role="tab"
+                                        aria-controls="acumulada-v-pills-120h" aria-selected="false">120h</button>
+                                    <button class="nav-link" id="acumulada-144h" data-bs-toggle="pill"
+                                        data-bs-target="#acumulada-v-pills-144h" type="button" role="tab"
+                                        aria-controls="acumulada-v-pills-144h" aria-selected="false">144h</button>
+                                    <button class="nav-link" id="acumulada-168h" data-bs-toggle="pill"
+                                        data-bs-target="#acumulada-v-pills-168h" type="button" role="tab"
+                                        aria-controls="acumulada-v-pills-168h" aria-selected="false">168h</button>
+                                </div>
+
+                                <div class="tab-content" id="acumulada-v-pills-tabContent">
+                                    <div class="tab-pane fade show active" id="acumulada-v-pills-024h" role="tabpanel"
+                                        aria-labelledby="acumulada-024h" tabindex="0"><img class="w-100"
+                                            src="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_sul_024.png">
+                                    </div>
+                                    <div class="tab-pane fade" id="acumulada-v-pills-048h" role="tabpanel"
+                                        aria-labelledby="acumulada-048h" tabindex="0"><img class="w-100"
+                                            src="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_sul_048.png">
+                                    </div>
+                                    <div class="tab-pane fade" id="acumulada-v-pills-072h" role="tabpanel"
+                                        aria-labelledby="acumulada-072h" tabindex="0"><img class="w-100"
+                                            src="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_sul_072.png">
+                                    </div>
+                                    <div class="tab-pane fade" id="acumulada-v-pills-096h" role="tabpanel"
+                                        aria-labelledby="acumulada-096h" tabindex="0"><img class="w-100"
+                                            src="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_sul_096.png">
+                                    </div>
+                                    <div class="tab-pane fade" id="acumulada-v-pills-120h" role="tabpanel"
+                                        aria-labelledby="acumulada-120h" tabindex="0"><img class="w-100"
+                                            src="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_sul_120.png">
+                                    </div>
+                                    <div class="tab-pane fade" id="acumulada-v-pills-144h" role="tabpanel"
+                                        aria-labelledby="acumulada-144h" tabindex="0"><img class="w-100"
+                                            src="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_sul_144.png">
+                                    </div>
+                                    <div class="tab-pane fade" id="acumulada-v-pills-168h" role="tabpanel"
+                                        aria-labelledby="acumulada-168h" tabindex="0"><img class="w-100"
+                                            src="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_sul_168.png">
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="btn-nav">
+                    <button onclick="toggleWrfContent(event)" data-bs-toggle="collapse" data-bs-target="#brams" aria-expanded="false"
+                        aria-controls="brams" class="btn btn-primary btn-collapse" id="btn-brams">Modelo BRAMS</button>
+
+                    <div class="collapse" id="brams">
+                        <!-- Conteúdo gerado dinamicamente aqui -->
+                    </div>
+                </div>
+
             </div>
-        </header>
-        <main>
-            <section class="content">
-                <h3>Produtos de Previsão Numérica</h3>
-                <ul class="subtitle-links">
-                    <li><a class="active" data-region="sul" onclick="changeRegion(this);">Região Sul</a></li>
-                    <li><a data-region="nde" onclick="changeRegion(this);">Região Nordeste</a></li>
-                </ul>
-
-                <!-- _______________________________ -->
-                
-                <div id="carouselSul" class="carousel slide">
-                    <div class="btns-container">
-                        <button id="button1" type="button" data-bs-target="#carouselSul" data-bs-slide-to="0" class="active active-button" aria-current="true" aria-label="wrf">Modelo WRF</button>
-                        <button id="button2" type="button" data-bs-target="#carouselSul" data-bs-slide-to="1" aria-label="brams">Modelo BRAMS</button>
-                        <button id="button3" type="button" data-bs-target="#carouselSul" data-bs-slide-to="2" aria-label="eta">Modelo ETA</button>
-                        <button id="button4" type="button" data-bs-target="#carouselSul" data-bs-slide-to="3" aria-label="smec">Modelo SMEC</button>
-                        <button id="button5" type="button" data-bs-target="#carouselSul" data-bs-slide-to="4" aria-label="multi">Multimodelos</button>
-                        <button id="button6" type="button" data-bs-target="#carouselSul" data-bs-slide-to="5" aria-label="bam">Previsão Anomalia de Precipitação (BAM Subsazonal)</button>
-                    </div>
-
-                    <div class="carousel-inner">
-                        <!-- Botões dinâmicos serão gerados aqui -->
-                    </div>
-
-                    <div class="figuras">
-                        <img src="{{ $urlImgSelecionada }}" alt="Link da imagem selecionada">
-                    </div>
-
-                </div>
-                
-                
-                <!-- _______________________________ -->
 
 
-                <!-- Região Sul -->
-                <div class="region sul">
-                    <div class="accordion">
-                        <input type="checkbox" id="tab-sul-1" />
-                        <label class="accordion-label" for="tab-sul-1">Modelo WRF</label>
-                        <div class="accordion-content">
-                            <h4>Produtos de Previsão para a Região Sul</h4>
-                            <p> Precipitação Diária:
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_sul_024.png" target="_blank">024h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_sul_048.png" target="_blank">048h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_sul_072.png" target="_blank">072h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_sul_096.png" target="_blank">096h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_sul_120.png" target="_blank">120h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_sul_144.png" target="_blank">144h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_sul_168.png" target="_blank">168h</a> -
-                                <button class="btn-open-dialog" onclick="openDialog(this)" data-title="Precipitação Diária do WRF" data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png" data-model="WRF07" data-variable="prec_sul" data-hs="024 048 072 096 120 144 168">Ver tudo</button>
-                            </p>
-                            <p> Precipitação Acumulada:
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_sul_024.png" target="_blank">024h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_sul_048.png" target="_blank">048h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_sul_072.png" target="_blank">072h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_sul_096.png" target="_blank">096h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_sul_120.png" target="_blank">120h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_sul_144.png" target="_blank">144h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_sul_168.png" target="_blank">168h</a> -
-                                <button class="btn-open-dialog" onclick="openDialog(this)" data-title="Precipitação Acumulada do WRF" data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png" data-model="WRF07" data-variable="prec_acum_sul" data-hs="024 048 072 096 120 144 168">Ver tudo</button>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion">
-                        <input type="checkbox" id="tab-sul-2" />
-                        <label class="accordion-label" for="tab-sul-2">Modelo BRAMS</label>
-                        <div class="accordion-content">
-                            <h4>Produtos de Previsão para a Região Sul</h4>
-                            <p> Precipitação Diária:
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_sul_024.png" target="_blank">024h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_sul_048.png" target="_blank">048h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_sul_072.png" target="_blank">072h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_sul_096.png" target="_blank">096h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_sul_120.png" target="_blank">120h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_sul_144.png" target="_blank">144h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_sul_168.png" target="_blank">168h</a> -
-                                <button class="btn-open-dialog" onclick="openDialog(this)" data-title="Precipitação Diária do BRAMS" data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png" data-model="BRAMS08" data-variable="prec_sul" data-hs="024 048 072 096 120 144 168">Ver tudo</button>
-                            </p>
-                            <p> Precipitação Acumulada:
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_sul_024.png" target="_blank">024h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_sul_048.png" target="_blank">048h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_sul_072.png" target="_blank">072h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_sul_096.png" target="_blank">096h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_sul_120.png" target="_blank">120h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_sul_144.png" target="_blank">144h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_sul_168.png" target="_blank">168h</a> -
-                                <button class="btn-open-dialog" onclick="openDialog(this)" data-title="Precipitação Acumulada do BRAMS" data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png" data-model="BRAMS08" data-variable="prec_acum_sul" data-hs="024 048 072 096 120 144 168">Ver tudo</button>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion">
-                        <input type="checkbox" id="tab-sul-3" />
-                        <label class="accordion-label" for="tab-sul-3">Modelo ETA</label>
-                        <div class="accordion-content">
-                            <h4>Produtos de Previsão para a Região Sul</h4>
-                            <p> Precipitação Diária:
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_sul_024.png" target="_blank">024h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_sul_048.png" target="_blank">048h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_sul_072.png" target="_blank">072h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_sul_096.png" target="_blank">096h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_sul_120.png" target="_blank">120h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_sul_144.png" target="_blank">144h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_sul_168.png" target="_blank">168h</a> -
-                                <button class="btn-open-dialog" onclick="openDialog(this)" data-title="Precipitação Diária do ETA" data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png" data-model="ETA08" data-variable="prec_sul" data-hs="024 048 072 096 120 144 168">Ver tudo</button>
-                            </p>
-                            <p> Precipitação Acumulada:
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_sul_024.png" target="_blank">024h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_sul_048.png" target="_blank">048h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_sul_072.png" target="_blank">072h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_sul_096.png" target="_blank">096h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_sul_120.png" target="_blank">120h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_sul_144.png" target="_blank">144h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_sul_168.png" target="_blank">168h</a> -
-                                <button class="btn-open-dialog" onclick="openDialog(this)" data-title="Precipitação Acumulada do ETA" data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png" data-model="ETA08" data-variable="prec_acum_sul" data-hs="024 048 072 096 120 144 168">Ver tudo</button>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion">
-                        <input type="checkbox" id="tab-sul-4" />
-                        <label class="accordion-label" for="tab-sul-4">Modelo SMEC</label>
-                        <div class="accordion-content">
-                            <h4>Produtos de Previsão para a Região Sul</h4>
-                            <p> Precipitação Diária:
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_sul_024.png" target="_blank">024h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_sul_048.png" target="_blank">048h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_sul_072.png" target="_blank">072h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_sul_096.png" target="_blank">096h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_sul_120.png" target="_blank">120h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_sul_144.png" target="_blank">144h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_sul_168.png" target="_blank">168h</a> -
-                                <button class="btn-open-dialog" onclick="openDialog(this)" data-title="Precipitação Diária do SMEC" data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png" data-model="SMEC" data-variable="prec_sul" data-hs="024 048 072 096 120 144 168">Ver tudo</button>
-                            </p>
-                            <p> Precipitação Acumulada:
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_sul_024.png" target="_blank">024h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_sul_048.png" target="_blank">048h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_sul_072.png" target="_blank">072h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_sul_096.png" target="_blank">096h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_sul_120.png" target="_blank">120h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_sul_144.png" target="_blank">144h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_sul_168.png" target="_blank">168h</a> -
-                                <button class="btn-open-dialog" onclick="openDialog(this)" data-title="Precipitação Acumulada do SMEC" data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png" data-model="SMEC" data-variable="prec_acum_sul" data-hs="024 048 072 096 120 144 168">Ver tudo</button>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion">
-                        <input type="checkbox" id="tab-sul-5" />
-                        <label class="accordion-label" for="tab-sul-5">Multimodelos</label>
-                        <div class="accordion-content">
-                            <h4>Produtos de Previsão para a Região Sul</h4>
-                            <p>Probabilidade de Precipitação Acumulada:
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_sul_p10.png" target="_blank">10mm</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_sul_p25.png" target="_blank">25mm</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_sul_p50.png" target="_blank">50mm</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_sul_p75.png" target="_blank">75mm</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_sul_p100.png" target="_blank">100mm</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_sul_p150.png" target="_blank">150mm</a> -
-                                <button class="btn-open-dialog" onclick="openDialog(this)" data-title="Probabilidade de Precipitação Acumulada" data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/prob_diaria/figuras/prec/[variable]_[hs].png" data-model="Multimodel" data-variable="pro_acum_sul" data-hs="p10 p25 p50 p75 p100 p150">Ver tudo</button>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion">
-                        <input type="checkbox" id="tab-sul-6" />
-                        <label class="accordion-label" for="tab-sul-6">Previsão Anomalia de Precipitação (BAM Subsazonal)</label>
-                        <div class="accordion-content">
-                            <h4>Produtos de Previsão para a Região Sul</h4>
-                            <p>Previsão Próximas Semanas:
-                                <a href="https://s0.cptec.inpe.br/subsaz/web_cptec/bam12_subsazonal_prec_anomaly_week01.png" target="_blank">Semana 1</a> -
-                                <a href="https://s0.cptec.inpe.br/subsaz/web_cptec/bam12_subsazonal_prec_anomaly_week02.png" target="_blank">Semana 2</a>
-                            </p>
-                        </div>
+            <!-- _______________________________ -->
+
+
+            <!-- Região Sul -->
+            <div class="region sul">
+                <div class="accordion">
+                    <input type="checkbox" id="tab-sul-1" />
+                    <label class="accordion-label" for="tab-sul-1">Modelo WRF</label>
+                    <div class="accordion-content">
+                        <h4>Produtos de Previsão para a Região Sul</h4>
+                        <p> Precipitação Diária:
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_sul_024.png"
+                                target="_blank">024h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_sul_048.png"
+                                target="_blank">048h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_sul_072.png"
+                                target="_blank">072h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_sul_096.png"
+                                target="_blank">096h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_sul_120.png"
+                                target="_blank">120h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_sul_144.png"
+                                target="_blank">144h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_sul_168.png"
+                                target="_blank">168h</a> -
+                            <button class="btn-open-dialog" onclick="openDialog(this)"
+                                data-title="Precipitação Diária do WRF"
+                                data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png"
+                                data-model="WRF07" data-variable="prec_sul" data-hs="024 048 072 096 120 144 168">Ver
+                                tudo</button>
+                        </p>
+                        <p> Precipitação Acumulada:
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_sul_024.png"
+                                target="_blank">024h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_sul_048.png"
+                                target="_blank">048h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_sul_072.png"
+                                target="_blank">072h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_sul_096.png"
+                                target="_blank">096h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_sul_120.png"
+                                target="_blank">120h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_sul_144.png"
+                                target="_blank">144h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_sul_168.png"
+                                target="_blank">168h</a> -
+                            <button class="btn-open-dialog" onclick="openDialog(this)"
+                                data-title="Precipitação Acumulada do WRF"
+                                data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png"
+                                data-model="WRF07" data-variable="prec_acum_sul"
+                                data-hs="024 048 072 096 120 144 168">Ver tudo</button>
+                        </p>
                     </div>
                 </div>
-                <!-- Região Nordeste -->
-                <div class="region nde hidden">
-                    <div class="accordion">
-                        <input type="checkbox" id="tab-nde-1" />
-                        <label class="accordion-label" for="tab-nde-1">Modelo WRF</label>
-                        <div class="accordion-content">
-                            <h4>Produtos de Previsão para a Região Nordeste</h4>
-                            <p> Precipitação Diária:
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_nde_024.png" target="_blank">024h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_nde_048.png" target="_blank">048h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_nde_072.png" target="_blank">072h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_nde_096.png" target="_blank">096h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_nde_120.png" target="_blank">120h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_nde_144.png" target="_blank">144h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_nde_168.png" target="_blank">168h</a> -
-                                <button class="btn-open-dialog" onclick="openDialog(this)" data-title="Precipitação Diária do WRF" data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png" data-model="WRF07" data-variable="prec_nde" data-hs="024 048 072 096 120 144 168">Ver tudo</button>
-                            </p>
-                            <p> Precipitação Acumulada:
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_nde_024.png" target="_blank">024h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_nde_048.png" target="_blank">048h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_nde_072.png" target="_blank">072h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_nde_096.png" target="_blank">096h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_nde_120.png" target="_blank">120h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_nde_144.png" target="_blank">144h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_nde_168.png" target="_blank">168h</a> -
-                                <button class="btn-open-dialog" onclick="openDialog(this)" data-title="Precipitação Acumulada do WRF" data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png" data-model="WRF07" data-variable="prec_acum_nde" data-hs="024 048 072 096 120 144 168">Ver tudo</button>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion">
-                        <input type="checkbox" id="tab-nde-2" />
-                        <label class="accordion-label" for="tab-nde-2">Modelo BRAMS</label>
-                        <div class="accordion-content">
-                            <h4>Produtos de Previsão para a Região Nordeste</h4>
-                            <p> Precipitação Diária:
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_nde_024.png" target="_blank">024h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_nde_048.png" target="_blank">048h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_nde_072.png" target="_blank">072h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_nde_096.png" target="_blank">096h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_nde_120.png" target="_blank">120h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_nde_144.png" target="_blank">144h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_nde_168.png" target="_blank">168h</a> -
-                                <button class="btn-open-dialog" onclick="openDialog(this)" data-title="Precipitação Diária do BRAMS" data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png" data-model="BRAMS08" data-variable="prec_nde" data-hs="024 048 072 096 120 144 168">Ver tudo</button>
-                            </p>
-                            <p> Precipitação Acumulada:
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_nde_024.png" target="_blank">024h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_nde_048.png" target="_blank">048h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_nde_072.png" target="_blank">072h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_nde_096.png" target="_blank">096h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_nde_120.png" target="_blank">120h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_nde_144.png" target="_blank">144h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_nde_168.png" target="_blank">168h</a> -
-                                <button class="btn-open-dialog" onclick="openDialog(this)" data-title="Precipitação Acumulada do BRAMS" data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png" data-model="BRAMS08" data-variable="prec_acum_nde" data-hs="024 048 072 096 120 144 168">Ver tudo</button>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion">
-                        <input type="checkbox" id="tab-nde-3" />
-                        <label class="accordion-label" for="tab-nde-3">Modelo ETA</label>
-                        <div class="accordion-content">
-                            <h4>Produtos de Previsão para a Região Nordeste</h4>
-                            <p> Precipitação Diária:
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_nde_024.png" target="_blank">024h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_nde_048.png" target="_blank">048h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_nde_072.png" target="_blank">072h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_nde_096.png" target="_blank">096h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_nde_120.png" target="_blank">120h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_nde_144.png" target="_blank">144h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_nde_168.png" target="_blank">168h</a> -
-                                <button class="btn-open-dialog" onclick="openDialog(this)" data-title="Precipitação Diária do ETA" data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png" data-model="ETA08" data-variable="prec_nde" data-hs="024 048 072 096 120 144 168">Ver tudo</button>
-                            </p>
-                            <p> Precipitação Acumulada:
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_nde_024.png" target="_blank">024h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_nde_048.png" target="_blank">048h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_nde_072.png" target="_blank">072h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_nde_096.png" target="_blank">096h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_nde_120.png" target="_blank">120h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_nde_144.png" target="_blank">144h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_nde_168.png" target="_blank">168h</a> -
-                                <button class="btn-open-dialog" onclick="openDialog(this)" data-title="Precipitação Acumulada do ETA" data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png" data-model="ETA08" data-variable="prec_acum_nde" data-hs="024 048 072 096 120 144 168">Ver tudo</button>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion">
-                        <input type="checkbox" id="tab-nde-4" />
-                        <label class="accordion-label" for="tab-nde-4">Modelo SMEC</label>
-                        <div class="accordion-content">
-                            <h4>Produtos de Previsão para a Região Nordeste</h4>
-                            <p> Precipitação Diária:
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_nde_024.png" target="_blank">024h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_nde_048.png" target="_blank">048h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_nde_072.png" target="_blank">072h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_nde_096.png" target="_blank">096h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_nde_120.png" target="_blank">120h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_nde_144.png" target="_blank">144h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_nde_168.png" target="_blank">168h</a> -
-                                <button class="btn-open-dialog" onclick="openDialog(this)" data-title="Precipitação Diária do SMEC" data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png" data-model="SMEC" data-variable="prec_nde" data-hs="024 048 072 096 120 144 168">Ver tudo</button>
-                            </p>
-                            <p> Precipitação Acumulada:
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_nde_024.png" target="_blank">024h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_nde_048.png" target="_blank">048h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_nde_072.png" target="_blank">072h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_nde_096.png" target="_blank">096h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_nde_120.png" target="_blank">120h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_nde_144.png" target="_blank">144h</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_nde_168.png" target="_blank">168h</a> -
-                                <button class="btn-open-dialog" onclick="openDialog(this)" data-title="Precipitação Acumulada do SMEC" data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png" data-model="SMEC" data-variable="prec_acum_nde" data-hs="024 048 072 096 120 144 168">Ver tudo</button>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion">
-                        <input type="checkbox" id="tab-nde-5" />
-                        <label class="accordion-label" for="tab-nde-5">Multimodelos</label>
-                        <div class="accordion-content">
-                            <h4>Produtos de Previsão para a Região Nordeste</h4>
-                            <p>Probabilidade de Precipitação Acumulada:
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_nde_p10.png" target="_blank">10mm</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_nde_p25.png" target="_blank">25mm</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_nde_p50.png" target="_blank">50mm</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_nde_p75.png" target="_blank">75mm</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_nde_p100.png" target="_blank">100mm</a> -
-                                <a href="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_nde_p150.png" target="_blank">150mm</a> -
-                                <button class="btn-open-dialog" onclick="openDialog(this)" data-title="Probabilidade de Precipitação Acumulada" data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/prob_diaria/figuras/prec/[variable]_[hs].png" data-model="Multimodel" data-variable="pro_acum_nde" data-hs="p10 p25 p50 p75 p100 p150">Ver tudo</button>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="accordion">
-                        <input type="checkbox" id="tab-nde-6" />
-                        <label class="accordion-label" for="tab-nde-6">Previsão Anomalia de Precipitação (BAM Subsazonal)</label>
-                        <div class="accordion-content">
-                            <h4>Produtos de Previsão para a Região Nordeste</h4>
-                            <p>Previsão Próximas Semanas:
-                                <a href="https://s0.cptec.inpe.br/subsaz/web_cptec/bam12_subsazonal_prec_anomaly_week01.png" target="_blank">Semana 1</a> -
-                                <a href="https://s0.cptec.inpe.br/subsaz/web_cptec/bam12_subsazonal_prec_anomaly_week02.png" target="_blank">Semana 2</a>
-                            </p>
-                        </div>
+                <div class="accordion">
+                    <input type="checkbox" id="tab-sul-2" />
+                    <label class="accordion-label" for="tab-sul-2">Modelo BRAMS</label>
+                    <div class="accordion-content">
+                        <h4>Produtos de Previsão para a Região Sul</h4>
+                        <p> Precipitação Diária:
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_sul_024.png"
+                                target="_blank">024h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_sul_048.png"
+                                target="_blank">048h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_sul_072.png"
+                                target="_blank">072h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_sul_096.png"
+                                target="_blank">096h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_sul_120.png"
+                                target="_blank">120h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_sul_144.png"
+                                target="_blank">144h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_sul_168.png"
+                                target="_blank">168h</a> -
+                            <button class="btn-open-dialog" onclick="openDialog(this)"
+                                data-title="Precipitação Diária do BRAMS"
+                                data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png"
+                                data-model="BRAMS08" data-variable="prec_sul" data-hs="024 048 072 096 120 144 168">Ver
+                                tudo</button>
+                        </p>
+                        <p> Precipitação Acumulada:
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_sul_024.png"
+                                target="_blank">024h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_sul_048.png"
+                                target="_blank">048h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_sul_072.png"
+                                target="_blank">072h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_sul_096.png"
+                                target="_blank">096h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_sul_120.png"
+                                target="_blank">120h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_sul_144.png"
+                                target="_blank">144h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_sul_168.png"
+                                target="_blank">168h</a> -
+                            <button class="btn-open-dialog" onclick="openDialog(this)"
+                                data-title="Precipitação Acumulada do BRAMS"
+                                data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png"
+                                data-model="BRAMS08" data-variable="prec_acum_sul"
+                                data-hs="024 048 072 096 120 144 168">Ver tudo</button>
+                        </p>
                     </div>
                 </div>
-            </section>
-        </main>
-        <footer>
-            <div class="links">
-                <div class="link">
-                    <a href="http://www.acessoainformacao.gov.br/"><span class="logo-acesso-footer"></span></a>
+                <div class="accordion">
+                    <input type="checkbox" id="tab-sul-3" />
+                    <label class="accordion-label" for="tab-sul-3">Modelo ETA</label>
+                    <div class="accordion-content">
+                        <h4>Produtos de Previsão para a Região Sul</h4>
+                        <p> Precipitação Diária:
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_sul_024.png"
+                                target="_blank">024h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_sul_048.png"
+                                target="_blank">048h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_sul_072.png"
+                                target="_blank">072h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_sul_096.png"
+                                target="_blank">096h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_sul_120.png"
+                                target="_blank">120h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_sul_144.png"
+                                target="_blank">144h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_sul_168.png"
+                                target="_blank">168h</a> -
+                            <button class="btn-open-dialog" onclick="openDialog(this)"
+                                data-title="Precipitação Diária do ETA"
+                                data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png"
+                                data-model="ETA08" data-variable="prec_sul" data-hs="024 048 072 096 120 144 168">Ver
+                                tudo</button>
+                        </p>
+                        <p> Precipitação Acumulada:
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_sul_024.png"
+                                target="_blank">024h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_sul_048.png"
+                                target="_blank">048h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_sul_072.png"
+                                target="_blank">072h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_sul_096.png"
+                                target="_blank">096h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_sul_120.png"
+                                target="_blank">120h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_sul_144.png"
+                                target="_blank">144h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_sul_168.png"
+                                target="_blank">168h</a> -
+                            <button class="btn-open-dialog" onclick="openDialog(this)"
+                                data-title="Precipitação Acumulada do ETA"
+                                data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png"
+                                data-model="ETA08" data-variable="prec_acum_sul"
+                                data-hs="024 048 072 096 120 144 168">Ver tudo</button>
+                        </p>
+                    </div>
                 </div>
-                <div class="link">
-                    <a href="http://www.brasil.gov.br/"><span class="logo-brasil-footer"></span></a>
+                <div class="accordion">
+                    <input type="checkbox" id="tab-sul-4" />
+                    <label class="accordion-label" for="tab-sul-4">Modelo SMEC</label>
+                    <div class="accordion-content">
+                        <h4>Produtos de Previsão para a Região Sul</h4>
+                        <p> Precipitação Diária:
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_sul_024.png"
+                                target="_blank">024h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_sul_048.png"
+                                target="_blank">048h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_sul_072.png"
+                                target="_blank">072h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_sul_096.png"
+                                target="_blank">096h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_sul_120.png"
+                                target="_blank">120h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_sul_144.png"
+                                target="_blank">144h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_sul_168.png"
+                                target="_blank">168h</a> -
+                            <button class="btn-open-dialog" onclick="openDialog(this)"
+                                data-title="Precipitação Diária do SMEC"
+                                data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png"
+                                data-model="SMEC" data-variable="prec_sul" data-hs="024 048 072 096 120 144 168">Ver
+                                tudo</button>
+                        </p>
+                        <p> Precipitação Acumulada:
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_sul_024.png"
+                                target="_blank">024h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_sul_048.png"
+                                target="_blank">048h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_sul_072.png"
+                                target="_blank">072h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_sul_096.png"
+                                target="_blank">096h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_sul_120.png"
+                                target="_blank">120h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_sul_144.png"
+                                target="_blank">144h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_sul_168.png"
+                                target="_blank">168h</a> -
+                            <button class="btn-open-dialog" onclick="openDialog(this)"
+                                data-title="Precipitação Acumulada do SMEC"
+                                data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png"
+                                data-model="SMEC" data-variable="prec_acum_sul"
+                                data-hs="024 048 072 096 120 144 168">Ver tudo</button>
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion">
+                    <input type="checkbox" id="tab-sul-5" />
+                    <label class="accordion-label" for="tab-sul-5">Multimodelos</label>
+                    <div class="accordion-content">
+                        <h4>Produtos de Previsão para a Região Sul</h4>
+                        <p>Probabilidade de Precipitação Acumulada:
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_sul_p10.png"
+                                target="_blank">10mm</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_sul_p25.png"
+                                target="_blank">25mm</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_sul_p50.png"
+                                target="_blank">50mm</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_sul_p75.png"
+                                target="_blank">75mm</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_sul_p100.png"
+                                target="_blank">100mm</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_sul_p150.png"
+                                target="_blank">150mm</a> -
+                            <button class="btn-open-dialog" onclick="openDialog(this)"
+                                data-title="Probabilidade de Precipitação Acumulada"
+                                data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/prob_diaria/figuras/prec/[variable]_[hs].png"
+                                data-model="Multimodel" data-variable="pro_acum_sul"
+                                data-hs="p10 p25 p50 p75 p100 p150">Ver tudo</button>
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion">
+                    <input type="checkbox" id="tab-sul-6" />
+                    <label class="accordion-label" for="tab-sul-6">Previsão Anomalia de Precipitação (BAM
+                        Subsazonal)</label>
+                    <div class="accordion-content">
+                        <h4>Produtos de Previsão para a Região Sul</h4>
+                        <p>Previsão Próximas Semanas:
+                            <a href="https://s0.cptec.inpe.br/subsaz/web_cptec/bam12_subsazonal_prec_anomaly_week01.png"
+                                target="_blank">Semana 1</a> -
+                            <a href="https://s0.cptec.inpe.br/subsaz/web_cptec/bam12_subsazonal_prec_anomaly_week02.png"
+                                target="_blank">Semana 2</a>
+                        </p>
+                    </div>
                 </div>
             </div>
-        </footer>
-        <dialog id="dialog">
-            <button class="btn-close" onclick="closeDialog(event);">&Cross;</button>
-            <h2 class="dialog-title"></h2>
-            <div class="dialog-content"></div>
-        </dialog>
+            <!-- Região Nordeste -->
+            <div class="region nde hidden">
+                <div class="accordion">
+                    <input type="checkbox" id="tab-nde-1" />
+                    <label class="accordion-label" for="tab-nde-1">Modelo WRF</label>
+                    <div class="accordion-content">
+                        <h4>Produtos de Previsão para a Região Nordeste</h4>
+                        <p> Precipitação Diária:
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_nde_024.png"
+                                target="_blank">024h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_nde_048.png"
+                                target="_blank">048h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_nde_072.png"
+                                target="_blank">072h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_nde_096.png"
+                                target="_blank">096h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_nde_120.png"
+                                target="_blank">120h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_nde_144.png"
+                                target="_blank">144h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_nde_168.png"
+                                target="_blank">168h</a> -
+                            <button class="btn-open-dialog" onclick="openDialog(this)"
+                                data-title="Precipitação Diária do WRF"
+                                data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png"
+                                data-model="WRF07" data-variable="prec_nde" data-hs="024 048 072 096 120 144 168">Ver
+                                tudo</button>
+                        </p>
+                        <p> Precipitação Acumulada:
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_nde_024.png"
+                                target="_blank">024h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_nde_048.png"
+                                target="_blank">048h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_nde_072.png"
+                                target="_blank">072h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_nde_096.png"
+                                target="_blank">096h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_nde_120.png"
+                                target="_blank">120h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_nde_144.png"
+                                target="_blank">144h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/prec_acum_nde_168.png"
+                                target="_blank">168h</a> -
+                            <button class="btn-open-dialog" onclick="openDialog(this)"
+                                data-title="Precipitação Acumulada do WRF"
+                                data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png"
+                                data-model="WRF07" data-variable="prec_acum_nde"
+                                data-hs="024 048 072 096 120 144 168">Ver tudo</button>
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion">
+                    <input type="checkbox" id="tab-nde-2" />
+                    <label class="accordion-label" for="tab-nde-2">Modelo BRAMS</label>
+                    <div class="accordion-content">
+                        <h4>Produtos de Previsão para a Região Nordeste</h4>
+                        <p> Precipitação Diária:
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_nde_024.png"
+                                target="_blank">024h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_nde_048.png"
+                                target="_blank">048h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_nde_072.png"
+                                target="_blank">072h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_nde_096.png"
+                                target="_blank">096h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_nde_120.png"
+                                target="_blank">120h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_nde_144.png"
+                                target="_blank">144h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_nde_168.png"
+                                target="_blank">168h</a> -
+                            <button class="btn-open-dialog" onclick="openDialog(this)"
+                                data-title="Precipitação Diária do BRAMS"
+                                data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png"
+                                data-model="BRAMS08" data-variable="prec_nde" data-hs="024 048 072 096 120 144 168">Ver
+                                tudo</button>
+                        </p>
+                        <p> Precipitação Acumulada:
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_nde_024.png"
+                                target="_blank">024h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_nde_048.png"
+                                target="_blank">048h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_nde_072.png"
+                                target="_blank">072h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_nde_096.png"
+                                target="_blank">096h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_nde_120.png"
+                                target="_blank">120h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_nde_144.png"
+                                target="_blank">144h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/prec_acum_nde_168.png"
+                                target="_blank">168h</a> -
+                            <button class="btn-open-dialog" onclick="openDialog(this)"
+                                data-title="Precipitação Acumulada do BRAMS"
+                                data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png"
+                                data-model="BRAMS08" data-variable="prec_acum_nde"
+                                data-hs="024 048 072 096 120 144 168">Ver tudo</button>
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion">
+                    <input type="checkbox" id="tab-nde-3" />
+                    <label class="accordion-label" for="tab-nde-3">Modelo ETA</label>
+                    <div class="accordion-content">
+                        <h4>Produtos de Previsão para a Região Nordeste</h4>
+                        <p> Precipitação Diária:
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_nde_024.png"
+                                target="_blank">024h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_nde_048.png"
+                                target="_blank">048h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_nde_072.png"
+                                target="_blank">072h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_nde_096.png"
+                                target="_blank">096h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_nde_120.png"
+                                target="_blank">120h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_nde_144.png"
+                                target="_blank">144h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_nde_168.png"
+                                target="_blank">168h</a> -
+                            <button class="btn-open-dialog" onclick="openDialog(this)"
+                                data-title="Precipitação Diária do ETA"
+                                data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png"
+                                data-model="ETA08" data-variable="prec_nde" data-hs="024 048 072 096 120 144 168">Ver
+                                tudo</button>
+                        </p>
+                        <p> Precipitação Acumulada:
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_nde_024.png"
+                                target="_blank">024h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_nde_048.png"
+                                target="_blank">048h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_nde_072.png"
+                                target="_blank">072h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_nde_096.png"
+                                target="_blank">096h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_nde_120.png"
+                                target="_blank">120h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_nde_144.png"
+                                target="_blank">144h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/prec_acum_nde_168.png"
+                                target="_blank">168h</a> -
+                            <button class="btn-open-dialog" onclick="openDialog(this)"
+                                data-title="Precipitação Acumulada do ETA"
+                                data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png"
+                                data-model="ETA08" data-variable="prec_acum_nde"
+                                data-hs="024 048 072 096 120 144 168">Ver tudo</button>
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion">
+                    <input type="checkbox" id="tab-nde-4" />
+                    <label class="accordion-label" for="tab-nde-4">Modelo SMEC</label>
+                    <div class="accordion-content">
+                        <h4>Produtos de Previsão para a Região Nordeste</h4>
+                        <p> Precipitação Diária:
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_nde_024.png"
+                                target="_blank">024h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_nde_048.png"
+                                target="_blank">048h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_nde_072.png"
+                                target="_blank">072h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_nde_096.png"
+                                target="_blank">096h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_nde_120.png"
+                                target="_blank">120h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_nde_144.png"
+                                target="_blank">144h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_nde_168.png"
+                                target="_blank">168h</a> -
+                            <button class="btn-open-dialog" onclick="openDialog(this)"
+                                data-title="Precipitação Diária do SMEC"
+                                data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png"
+                                data-model="SMEC" data-variable="prec_nde" data-hs="024 048 072 096 120 144 168">Ver
+                                tudo</button>
+                        </p>
+                        <p> Precipitação Acumulada:
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_nde_024.png"
+                                target="_blank">024h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_nde_048.png"
+                                target="_blank">048h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_nde_072.png"
+                                target="_blank">072h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_nde_096.png"
+                                target="_blank">096h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_nde_120.png"
+                                target="_blank">120h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_nde_144.png"
+                                target="_blank">144h</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/prec_acum_nde_168.png"
+                                target="_blank">168h</a> -
+                            <button class="btn-open-dialog" onclick="openDialog(this)"
+                                data-title="Precipitação Acumulada do SMEC"
+                                data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/figuras/precipitacao/[variable]_[hs].png"
+                                data-model="SMEC" data-variable="prec_acum_nde"
+                                data-hs="024 048 072 096 120 144 168">Ver tudo</button>
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion">
+                    <input type="checkbox" id="tab-nde-5" />
+                    <label class="accordion-label" for="tab-nde-5">Multimodelos</label>
+                    <div class="accordion-content">
+                        <h4>Produtos de Previsão para a Região Nordeste</h4>
+                        <p>Probabilidade de Precipitação Acumulada:
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_nde_p10.png"
+                                target="_blank">10mm</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_nde_p25.png"
+                                target="_blank">25mm</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_nde_p50.png"
+                                target="_blank">50mm</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_nde_p75.png"
+                                target="_blank">75mm</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_nde_p100.png"
+                                target="_blank">100mm</a> -
+                            <a href="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_nde_p150.png"
+                                target="_blank">150mm</a> -
+                            <button class="btn-open-dialog" onclick="openDialog(this)"
+                                data-title="Probabilidade de Precipitação Acumulada"
+                                data-url-base="https://s1.cptec.inpe.br/grafico/Modelos/[model]/prob_diaria/figuras/prec/[variable]_[hs].png"
+                                data-model="Multimodel" data-variable="pro_acum_nde"
+                                data-hs="p10 p25 p50 p75 p100 p150">Ver tudo</button>
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion">
+                    <input type="checkbox" id="tab-nde-6" />
+                    <label class="accordion-label" for="tab-nde-6">Previsão Anomalia de Precipitação (BAM
+                        Subsazonal)</label>
+                    <div class="accordion-content">
+                        <h4>Produtos de Previsão para a Região Nordeste</h4>
+                        <p>Previsão Próximas Semanas:
+                            <a href="https://s0.cptec.inpe.br/subsaz/web_cptec/bam12_subsazonal_prec_anomaly_week01.png"
+                                target="_blank">Semana 1</a> -
+                            <a href="https://s0.cptec.inpe.br/subsaz/web_cptec/bam12_subsazonal_prec_anomaly_week02.png"
+                                target="_blank">Semana 2</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="links">
+            <div class="link">
+                <a href="http://www.acessoainformacao.gov.br/"><span class="logo-acesso-footer"></span></a>
+            </div>
+            <div class="link">
+                <a href="http://www.brasil.gov.br/"><span class="logo-brasil-footer"></span></a>
+            </div>
+        </div>
+    </footer>
+    <dialog id="dialog">
+        <button class="btn-close" onclick="closeDialog(event);">&Cross;</button>
+        <h2 class="dialog-title"></h2>
+        <div class="dialog-content"></div>
+    </dialog>
 
 
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/scripts.js"></script>
-    </body>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
 
 </html>

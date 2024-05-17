@@ -276,13 +276,14 @@ dialog .btn-open-image:hover {
 
 /* ---------------------- */
 
-.text {
+.btns-container {
 	display: flex;
-	justify-content: start;
-	align-items: center;
+	flex-direction: column;
+	gap: 10px;
 }
 
-.text a {
-	padding-left: 10px;
-	padding-right: 10px;
+.nav-container {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 }
