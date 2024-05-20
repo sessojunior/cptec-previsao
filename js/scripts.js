@@ -50,23 +50,58 @@ function closeDialog() {
 
 // ________________________
 
-// Mapeamento dos nomes dos botões para os nomes dos selects e opções correspondentes
-var modeloSelecionado = {
-	'wrf': ['024h', '048h', '072h', '096h', '120h', '144h', '168h'],
-	'brams': ['024h', '048h', '072h', '096h', '120h', '144h', '168h'],
-	'eta': ['024h', '048h', '072h', '096h', '120h', '144h', '168h'],
-	'smec': ['024h', '048h', '072h', '096h', '120h', '144h', '168h'],
-	'multi': ['10mm', '25mm', '50mm', '75mm', '100mm', '150mm'],
-	'bam': ['Semana 1', 'Semana 2']
-};
+document.addEventListener('DOMContentLoaded', function () {
+	const btnSul = document.getElementById('btn-sul');
+	const btnNde = document.getElementById('btn-nde');
+	const divSul = document.getElementById('sul');
+	const divNde = document.getElementById('nde');
+	const navContainer = document.getElementById('nav-container');
 
-function toggleWrfContent(event) {
+	function showContent(targetDiv) {
+		// Inserir o conteúdo dinâmico na div alvo
+		targetDiv.appendChild(navContainer);
+		navContainer.style.display = 'block';
+	}
+
+	btnSul.addEventListener('click', function () {
+		divSul.style.display = 'block';
+		divNde.style.display = 'none';
+		btnSul.classList.add('btn-primary');
+		btnSul.classList.remove('btn-secondary');
+		btnNde.classList.add('btn-secondary');
+		btnNde.classList.remove('btn-primary');
+		showContent(divSul);
+		updateLinks('sul');
+	});
+
+	btnNde.addEventListener('click', function () {
+		divSul.style.display = 'none';
+		divNde.style.display = 'block';
+		btnSul.classList.add('btn-secondary');
+		btnSul.classList.remove('btn-primary');
+		btnNde.classList.add('btn-primary');
+		btnNde.classList.remove('btn-secondary');
+		showContent(divNde);
+		updateLinks('nde');
+	});
+
+	// Inicializar com o conteúdo dinâmico na div "sul"
+	showContent(divSul);
+
+	function updateLinks(region) {
+		const images = document.querySelectorAll('.tab-pane img');
+		images.forEach(img => {
+			img.src = img.src.replace(/sul|nde/, region);
+		});
+	}
+});
+
+function toggleContent(event) {
 	var buttonId = event.target.id;
 	var targetDivId = buttonId.replace("btn-", "");
 	var contentDiv = document.getElementById(targetDivId);
 	
-	if (buttonId === "btn-wrf" || buttonId === "btn-brams") {
-		// console.log('ButtonID:', buttonId)
+	if (buttonId === "btn-wrf" || buttonId === "btn-brams" || buttonId === "btn-eta" || buttonId === "btn-smec") {
 		if (contentDiv.innerHTML.trim()) {
 			contentDiv.innerHTML = `
 				<div class="d-flex gap-3">
@@ -88,7 +123,6 @@ function toggleWrfContent(event) {
 					</div>
 				</div>
 			`;
-			// console.log('CONTENT DIV:', targetDivId)
 		}
 	}
 }
@@ -113,6 +147,10 @@ function generateImageTabs(type, targetDivId) {
 		baseUrl = "https://s1.cptec.inpe.br/grafico/Modelos/WRF07/figuras/precipitacao/";
 	} else if (targetDivId === "brams") {
 		baseUrl = "https://s1.cptec.inpe.br/grafico/Modelos/BRAMS08/figuras/precipitacao/";
+	} else if (targetDivId === "eta") {
+		baseUrl = "https://s1.cptec.inpe.br/grafico/Modelos/ETA08/figuras/precipitacao/";
+	} else if (targetDivId === "smec") {
+		baseUrl = "https://s1.cptec.inpe.br/grafico/Modelos/SMEC/figuras/precipitacao/";
 	}
 
 	for (var i = 24; i <= 168; i += 24) {
