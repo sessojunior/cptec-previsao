@@ -104,17 +104,17 @@ function toggleContent(event) {
 	if (buttonId === "btn-wrf" || buttonId === "btn-brams" || buttonId === "btn-eta" || buttonId === "btn-smec") {
 		if (contentDiv.innerHTML.trim()) {
 			contentDiv.innerHTML = `
-				<div class="d-flex gap-3">
-					<div class="align-items-start mt-1 w-50">
-						<div class="nav nav-pills me-3" id="${targetDivId}-diaria-v-pills-tab" role="tablist">
+				<div class="d-flex gap-3 mb-2">
+					<div class="align-items-start w-50">
+						<div class="nav nav-pills" id="${targetDivId}-diaria-v-pills-tab" role="tablist">
 							${generateButtons("diaria", targetDivId)}
 						</div>
 						<div class="tab-content" id="${targetDivId}-diaria-v-pills-tabContent">
 							${generateImageTabs("diaria", targetDivId)}
 						</div>
 					</div>
-					<div class="align-items-start mt-1 w-50">
-						<div class="nav nav-pills me-3" id="${targetDivId}-acumulada-v-pills-tab" role="tablist">
+					<div class="align-items-start w-50">
+						<div class="nav nav-pills" id="${targetDivId}-acumulada-v-pills-tab" role="tablist">
 							${generateButtons("acumulada", targetDivId)}
 						</div>
 						<div class="tab-content" id="${targetDivId}-acumulada-v-pills-tabContent">

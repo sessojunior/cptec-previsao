@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produtos do INPE</title>
-    <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
 <body>
+
     <header>
         <div class="logo">
             <a href="https://www.cptec.inpe.br">
@@ -23,20 +24,21 @@
             </span>
         </div>
     </header>
+
     <main>
-        <section class="content">
-            
-            <div class="container">
+        <section class="container">
+
+            <div class="regiao">
                 <h3>Produtos de Previsão Numérica</h3>
-                <div class="btn-group my-3" role="group">
+                <div class="btn-group" role="group">
                     <button id="btn-sul" type="button" class="btn btn-primary">Região Sul</button>
                     <button id="btn-nde" type="button" class="btn btn-secondary">Região Nordeste</button>
                 </div>
-        
+
                 <div id="sul" class="content">
                     <!-- nav-container é puxado pra cá quando o button é clicado -->
                 </div>
-        
+
                 <div id="nde" class="content" style="display: none;">
                     <!-- nav-container é puxado pra cá quando o button é clicado -->
                 </div>
@@ -46,7 +48,7 @@
 
                 <div class="btn-nav">
                     <button onclick="toggleContent(event)" data-bs-toggle="collapse" data-bs-target="#wrf"
-                        aria-expanded="false" aria-controls="wrf" class="btn btn-primary btn-collapse"
+                        aria-expanded="false" aria-controls="wrf" class="btn btn-primary btn-collapse dropdown-toggle"
                         id="btn-wrf">Modelo WRF</button>
                     <div class="collapse" id="wrf">
                         <!-- Conteúdo gerado dinamicamente aqui -->
@@ -55,7 +57,7 @@
 
                 <div class="btn-nav">
                     <button onclick="toggleContent(event)" data-bs-toggle="collapse" data-bs-target="#brams"
-                        aria-expanded="false" aria-controls="brams" class="btn btn-primary btn-collapse"
+                        aria-expanded="false" aria-controls="brams" class="btn btn-primary btn-collapse dropdown-toggle"
                         id="btn-brams">Modelo BRAMS</button>
                     <div class="collapse" id="brams">
                         <!-- Conteúdo gerado dinamicamente aqui -->
@@ -64,7 +66,7 @@
 
                 <div class="btn-nav">
                     <button onclick="toggleContent(event)" data-bs-toggle="collapse" data-bs-target="#eta"
-                        aria-expanded="false" aria-controls="eta" class="btn btn-primary btn-collapse"
+                        aria-expanded="false" aria-controls="eta" class="btn btn-primary btn-collapse dropdown-toggle"
                         id="btn-eta">Modelo ETA</button>
                     <div class="collapse" id="eta">
                         <!-- Conteúdo gerado dinamicamente aqui -->
@@ -73,7 +75,7 @@
 
                 <div class="btn-nav">
                     <button onclick="toggleContent(event)" data-bs-toggle="collapse" data-bs-target="#smec"
-                        aria-expanded="false" aria-controls="smec" class="btn btn-primary btn-collapse"
+                        aria-expanded="false" aria-controls="smec" class="btn btn-primary btn-collapse dropdown-toggle"
                         id="btn-smec">Modelo SMEC</button>
                     <div class="collapse" id="smec">
                         <!-- Conteúdo gerado dinamicamente aqui -->
@@ -82,96 +84,81 @@
 
                 <div class="btn-nav">
                     <button data-bs-toggle="collapse" data-bs-target="#multimodelos" aria-expanded="false"
-                        aria-controls="multimodelos" class="btn btn-primary btn-collapse"
+                        aria-controls="multimodelos" class="btn btn-primary btn-collapse dropdown-toggle"
                         id="btn-multimodelos">Multimodelos</button>
-                    <div class="collapse" id="multimodelos">
-                        <div class="d-flex gap-3">
-                            <div class="align-items-start mt-1 w-50">
-                                <div class="nav nav-pills me-3" id="multimodelos-diaria-v-pills-tab" role="tablist">
-                                    <button class="nav-link active" id="multimodelos-10mm" data-bs-toggle="pill"
-                                        data-bs-target="#multimodelos-v-pills-10mm" type="button" role="tab"
-                                        aria-controls="multimodelos-v-pills-10mm" aria-selected="true">10mm</button>
-                                    <button class="nav-link" id="multimodelos-25mm" data-bs-toggle="pill"
-                                        data-bs-target="#multimodelos-v-pills-25mm" type="button" role="tab"
-                                        aria-controls="multimodelos-v-pills-25mm" aria-selected="false">25mm</button>
-                                    <button class="nav-link" id="multimodelos-50mm" data-bs-toggle="pill"
-                                        data-bs-target="#multimodelos-v-pills-50mm" type="button" role="tab"
-                                        aria-controls="multimodelos-v-pills-50mm" aria-selected="false">50mm</button>
-                                    <button class="nav-link" id="multimodelos-75mm" data-bs-toggle="pill"
-                                        data-bs-target="#multimodelos-v-pills-75mm" type="button" role="tab"
-                                        aria-controls="multimodelos-v-pills-75mm" aria-selected="false">75mm</button>
-                                    <button class="nav-link" id="multimodelos-100mm" data-bs-toggle="pill"
-                                        data-bs-target="#multimodelos-v-pills-100mm" type="button" role="tab"
-                                        aria-controls="multimodelos-v-pills-100mm" aria-selected="false">100mm</button>
-                                    <button class="nav-link" id="multimodelos-150mm" data-bs-toggle="pill"
-                                        data-bs-target="#multimodelos-v-pills-150mm" type="button" role="tab"
-                                        aria-controls="multimodelos-v-pills-150mm" aria-selected="false">150mm</button>
-                                </div>
-                                <div class="tab-content" id="multimodelos-diaria-v-pills-tabContent">
-                                    <div class="tab-pane fade show active"
-                                        id="multimodelos-v-pills-10mm" role="tabpanel"
-                                        aria-labelledby="multimodelos-10mm" tabindex="0">
-                                        <img class="w-100" src="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_sul_p10.png">
-                                    </div>
-                                    <div class="tab-pane fade"
-                                        id="multimodelos-v-pills-25mm" role="tabpanel"
-                                        aria-labelledby="multimodelos-25mm" tabindex="0">
-                                        <img class="w-100" src="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_sul_p25.png">
-                                    </div>
-                                    <div class="tab-pane fade"
-                                        id="multimodelos-v-pills-50mm" role="tabpanel"
-                                        aria-labelledby="multimodelos-50mm" tabindex="0">
-                                        <img class="w-100" src="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_sul_p50.png">
-                                    </div>
-                                    <div class="tab-pane fade"
-                                        id="multimodelos-v-pills-75mm" role="tabpanel"
-                                        aria-labelledby="multimodelos-75mm" tabindex="0">
-                                        <img class="w-100" src="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_sul_p75.png">
-                                    </div>
-                                    <div class="tab-pane fade"
-                                        id="multimodelos-v-pills-100mm" role="tabpanel"
-                                        aria-labelledby="multimodelos-100mm" tabindex="0">
-                                        <img class="w-100" src="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_sul_p100.png">
-                                    </div>
-                                    <div class="tab-pane fade"
-                                        id="multimodelos-v-pills-150mm" role="tabpanel"
-                                        aria-labelledby="multimodelos-150mm" tabindex="0">
-                                        <img class="w-100" src="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_sul_p150.png">
-                                    </div>
-                                </div>
+                    <div class="collapse multimodelos-container" id="multimodelos">
+                        <div class="nav nav-pills me-3 nav-multimodelos" id="multimodelos-diaria-v-pills-tab" role="tablist">
+                            <button class="nav-link active" id="multimodelos-10mm" data-bs-toggle="pill"
+                                data-bs-target="#multimodelos-v-pills-10mm" type="button" role="tab"
+                                aria-controls="multimodelos-v-pills-10mm" aria-selected="true">10mm</button>
+                            <button class="nav-link" id="multimodelos-25mm" data-bs-toggle="pill"
+                                data-bs-target="#multimodelos-v-pills-25mm" type="button" role="tab"
+                                aria-controls="multimodelos-v-pills-25mm" aria-selected="false">25mm</button>
+                            <button class="nav-link" id="multimodelos-50mm" data-bs-toggle="pill"
+                                data-bs-target="#multimodelos-v-pills-50mm" type="button" role="tab"
+                                aria-controls="multimodelos-v-pills-50mm" aria-selected="false">50mm</button>
+                            <button class="nav-link" id="multimodelos-75mm" data-bs-toggle="pill"
+                                data-bs-target="#multimodelos-v-pills-75mm" type="button" role="tab"
+                                aria-controls="multimodelos-v-pills-75mm" aria-selected="false">75mm</button>
+                            <button class="nav-link" id="multimodelos-100mm" data-bs-toggle="pill"
+                                data-bs-target="#multimodelos-v-pills-100mm" type="button" role="tab"
+                                aria-controls="multimodelos-v-pills-100mm" aria-selected="false">100mm</button>
+                            <button class="nav-link" id="multimodelos-150mm" data-bs-toggle="pill"
+                                data-bs-target="#multimodelos-v-pills-150mm" type="button" role="tab"
+                                aria-controls="multimodelos-v-pills-150mm" aria-selected="false">150mm</button>
+                        </div>
+                        <div class="tab-content nav-multimodelos" id="multimodelos-diaria-v-pills-tabContent">
+                            <div class="tab-pane fade show active" id="multimodelos-v-pills-10mm" role="tabpanel"
+                                aria-labelledby="multimodelos-10mm" tabindex="0">
+                                <img class="w-100"
+                                    src="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_sul_p10.png">
+                            </div>
+                            <div class="tab-pane fade" id="multimodelos-v-pills-25mm" role="tabpanel"
+                                aria-labelledby="multimodelos-25mm" tabindex="0">
+                                <img class="w-100"
+                                    src="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_sul_p25.png">
+                            </div>
+                            <div class="tab-pane fade" id="multimodelos-v-pills-50mm" role="tabpanel"
+                                aria-labelledby="multimodelos-50mm" tabindex="0">
+                                <img class="w-100"
+                                    src="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_sul_p50.png">
+                            </div>
+                            <div class="tab-pane fade" id="multimodelos-v-pills-75mm" role="tabpanel"
+                                aria-labelledby="multimodelos-75mm" tabindex="0">
+                                <img class="w-100"
+                                    src="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_sul_p75.png">
+                            </div>
+                            <div class="tab-pane fade" id="multimodelos-v-pills-100mm" role="tabpanel"
+                                aria-labelledby="multimodelos-100mm" tabindex="0">
+                                <img class="w-100"
+                                    src="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_sul_p100.png">
+                            </div>
+                            <div class="tab-pane fade" id="multimodelos-v-pills-150mm" role="tabpanel"
+                                aria-labelledby="multimodelos-150mm" tabindex="0">
+                                <img class="w-100"
+                                    src="https://s1.cptec.inpe.br/grafico/Modelos/Multimodel/prob_diaria/figuras/prec/pro_acum_sul_p150.png">
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="btn-nav">
-                    <button data-bs-toggle="collapse" data-bs-target="#paps" aria-expanded="false"
-                        aria-controls="paps" class="btn btn-primary btn-collapse"
-                        id="btn-paps">Previsão da Anomalia de Precipitação Semanal (BAM
+                    <button data-bs-toggle="collapse" data-bs-target="#paps" aria-expanded="false" aria-controls="paps"
+                        class="btn btn-primary btn-collapse dropdown-toggle" id="btn-paps">Previsão da Anomalia de
+                        Precipitação Semanal (BAM
                         Subsazonal)</button>
                     <div class="collapse" id="paps">
-                        <div class="d-flex gap-3">
-                            <div class="align-items-start mt-1 w-50">
-                                <div class="nav nav-pills me-3" id="paps-diaria-v-pills-tab" role="tablist">
-                                    <button class="nav-link active" id="paps-s1" data-bs-toggle="pill"
-                                        data-bs-target="#paps-v-pills-s1" type="button" role="tab"
-                                        aria-controls="paps-v-pills-s1" aria-selected="true">Semana 1</button>
-                                    <button class="nav-link" id="paps-s2" data-bs-toggle="pill"
-                                        data-bs-target="#paps-v-pills-s2" type="button" role="tab"
-                                        aria-controls="paps-v-pills-s2" aria-selected="false">Semana 2</button>
-                                </div>
-                                <div class="tab-content" id="paps-diaria-v-pills-tabContent">
-                                    <div class="tab-pane fade show active"
-                                        id="paps-v-pills-s1" role="tabpanel"
-                                        aria-labelledby="paps-s1" tabindex="0">
-                                        <img class="w-100" src="https://s0.cptec.inpe.br/subsaz/web_cptec/bam12_subsazonal_prec_anomaly_week01.png">
-                                    </div>
-                                    <div class="tab-pane fade"
-                                        id="paps-v-pills-s2" role="tabpanel"
-                                        aria-labelledby="paps-s2" tabindex="0">
-                                        <img class="w-100" src="https://s0.cptec.inpe.br/subsaz/web_cptec/bam12_subsazonal_prec_anomaly_week02.png">
-                                    </div>
-                                </div>
+                        <div class="tab-pane fade show active" id="paps-v-pills-s1" role="tabpanel"
+                            aria-labelledby="paps-s1" tabindex="0">
+                            <div class="img-box">
+                                <h4>Semana 1</h4>
+                                <img
+                                    src="https://s0.cptec.inpe.br/subsaz/web_cptec/bam12_subsazonal_prec_anomaly_week01.png">
+                            </div>
+                            <div class="img-box">
+                                <h4>Semana 2</h4>
+                                <img
+                                    src="https://s0.cptec.inpe.br/subsaz/web_cptec/bam12_subsazonal_prec_anomaly_week02.png">
                             </div>
                         </div>
                     </div>
@@ -180,19 +167,20 @@
             </div>
 
         </section>
+
     </main>
 
-
     <footer>
-        <div class="links">
+        <div class="links container">
             <div class="link">
-                <a href="http://www.acessoainformacao.gov.br/"><span class="logo-acesso-footer"></span></a>
+                <a href="http://www.acessoainformacao.gov.br/"><img src="imgs/acesso-info.png" class="acesso-info">Acesso à informação</a>
             </div>
             <div class="link">
-                <a href="http://www.brasil.gov.br/"><span class="logo-brasil-footer"></span></a>
+                <a href="http://www.brasil.gov.br/"><img src="imgs/governo-federal.png" class="gov-federal"></a>
             </div>
         </div>
     </footer>
+
     <dialog id="dialog">
         <button class="btn-close" onclick="closeDialog(event);">&Cross;</button>
         <h2 class="dialog-title"></h2>
