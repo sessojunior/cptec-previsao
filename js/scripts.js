@@ -1,55 +1,4 @@
-function changeRegion(item) {
-	let regions = document.querySelectorAll(".region");
-	for (let i = 0; i < regions.length; i++) {
-		regions[i].classList.add("hidden");
-	}
-	let subtitleLinks = document.querySelectorAll(".subtitle-links li a");
-	for (let i = 0; i < subtitleLinks.length; i++) {
-		subtitleLinks[i].classList.remove("active");
-	}
-	document.getElementsByClassName(item.dataset.region)[0].classList.remove("hidden");
-	item.classList.add("active");
-}
-
-function openImage(imageSrc, item) {
-	const figureBtn = document.querySelector("#" + item);
-	document.querySelector(".dialog-figure").setAttribute("src", imageSrc);
-	let figureBtns = document.querySelectorAll(".figure-btn");
-	for (let i = 0; i < figureBtns.length; i++) {
-		figureBtns[i].classList.remove("active");
-	}
-	figureBtn.classList.add("active");
-}
-
-function openDialog(item) {
-	const title = document.querySelector(".dialog-title");
-	const content = document.querySelector(".dialog-content");
-	const model = item.dataset.model;
-	const variable = item.dataset.variable;
-	const urlBase = item.dataset.urlBase;
-	const hs = item.dataset.hs.split(" ");
-	title.innerHTML = item.dataset.title;
-	let src = urlBase.replace("[model]", model).replace("[variable]", variable).replace("[hs]", hs[0]);
-	let text = `<img class="dialog-figure" src="${src}" alt="${model}" />`;
-	text += `<ul class="figure-list"><li>Horários: </li>`;
-	hs.map((item, index) => {
-		const imageSrc = urlBase.replace("[model]", model).replace("[variable]", variable).replace("[hs]", item);
-		const active = index == 0 ? " active" : "";
-		text += `<li><button class="figure-btn btn-open-image ${active}" id="figure-btn-${item}" onclick="openImage('${imageSrc}', 'figure-btn-${item}')">${item}</button></li>`;
-	});
-	text += `</ul>`;
-	content.innerHTML = text;
-
-	dialog.show();
-}
-
-function closeDialog() {
-	dialog.close();
-}
-
-
-// ________________________
-
+// Função responsável por realizar a troca de todas as informações de sul para nde e vice versa
 document.addEventListener('DOMContentLoaded', function () {
 	const btnSul = document.getElementById('btn-sul');
 	const btnNde = document.getElementById('btn-nde');
@@ -58,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	const navContainer = document.getElementById('nav-container');
 
 	function showContent(targetDiv) {
-		// Inserir o conteúdo dinâmico na div alvo
+		// Insere o conteúdo dinâmico na div alvo
 		targetDiv.appendChild(navContainer);
 		navContainer.style.display = 'block';
 	}
@@ -85,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		updateLinks('nde');
 	});
 
-	// Inicializar com o conteúdo dinâmico na div "sul"
+	// Inicializa com o conteúdo dinâmico na div "sul"
 	showContent(divSul);
 
 	function updateLinks(region) {
@@ -96,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 });
 
+// Função responsável por gerar dinamicamente os botões e divs que irão receber o conteúdo
 function toggleContent(event) {
 	var buttonId = event.target.id;
 	var targetDivId = buttonId.replace("btn-", "");
@@ -104,8 +54,9 @@ function toggleContent(event) {
 	if (buttonId === "btn-wrf" || buttonId === "btn-brams" || buttonId === "btn-eta" || buttonId === "btn-smec") {
 		if (contentDiv.innerHTML.trim()) {
 			contentDiv.innerHTML = `
-				<div class="d-flex gap-3 mb-2">
-					<div class="align-items-start w-50">
+				<div class="model-container">
+					<div class="model-box">
+						<p class="prec-text">Precipitação Diária</p>
 						<div class="nav nav-pills" id="${targetDivId}-diaria-v-pills-tab" role="tablist">
 							${generateButtons("diaria", targetDivId)}
 						</div>
@@ -113,7 +64,8 @@ function toggleContent(event) {
 							${generateImageTabs("diaria", targetDivId)}
 						</div>
 					</div>
-					<div class="align-items-start w-50">
+					<div class="model-box">
+						<p class="prec-text">Precipitação Acumulada</p>
 						<div class="nav nav-pills" id="${targetDivId}-acumulada-v-pills-tab" role="tablist">
 							${generateButtons("acumulada", targetDivId)}
 						</div>
@@ -127,6 +79,7 @@ function toggleContent(event) {
 	}
 }
 
+// Função responsável por gerar os botões com as horas para alterar as imagens
 function generateButtons(type, targetDivId) {
 	var buttonsHTML = "";
 	for (var i = 24; i <= 168; i += 24) {
@@ -139,6 +92,7 @@ function generateButtons(type, targetDivId) {
 	return buttonsHTML;
 }
 
+// Função responsável por verificar o horário selecionado e anexar o link dinâmico da imagem
 function generateImageTabs(type, targetDivId) {
 	var imageTabsHTML = "";
 	var baseUrl;

@@ -10,12 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="icon" type="image/x-icon" href="imgs/meteorologia.png">
 </head>
 
 <body>
 
     <header>
-        <div class="logo">
+        <div class="logo container">
             <a href="https://www.cptec.inpe.br">
                 <h2 class="title">Centro de Previsão de Tempo e Estudos Climáticos</h2>
             </a>
@@ -151,12 +152,12 @@
                         <div class="tab-pane fade show active" id="paps-v-pills-s1" role="tabpanel"
                             aria-labelledby="paps-s1" tabindex="0">
                             <div class="img-box">
-                                <h4>Semana 1</h4>
+                                <p>Semana 1</p>
                                 <img
                                     src="https://s0.cptec.inpe.br/subsaz/web_cptec/bam12_subsazonal_prec_anomaly_week01.png">
                             </div>
                             <div class="img-box">
-                                <h4>Semana 2</h4>
+                                <p>Semana 2</p>
                                 <img
                                     src="https://s0.cptec.inpe.br/subsaz/web_cptec/bam12_subsazonal_prec_anomaly_week02.png">
                             </div>
@@ -180,13 +181,6 @@
             </div>
         </div>
     </footer>
-
-    <dialog id="dialog">
-        <button class="btn-close" onclick="closeDialog(event);">&Cross;</button>
-        <h2 class="dialog-title"></h2>
-        <div class="dialog-content"></div>
-    </dialog>
-
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/scripts.js"></script>
